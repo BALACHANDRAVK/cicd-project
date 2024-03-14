@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: httpd
-          image: balachandravk/cicd:v11.0
+          image: balachandravk/cicd:v11.01
           ports:
             - containerPort: 8080
 
