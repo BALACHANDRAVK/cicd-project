@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: spring-boot-k8s-deployment
+  name: spring-boot
 spec:
   selector:
     matchLabels:
