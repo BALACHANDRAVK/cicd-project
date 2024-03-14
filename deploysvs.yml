@@ -1,37 +1,40 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: apps-deployment
-  namaspace: default
+  name: spring-boot-k8s-deployment
 spec:
-  replicas: 2
   selector:
     matchLabels:
-      name: test-app
+      app: spring-boot-k8s
+  replicas: 2
   template:
     metadata:
       labels:
-        name: test-app
+        app: spring-boot-k8s
     spec:
       containers:
-        - name: httpd
+        - name: spring-boot-k8s
           image: balachandravk/cicd:v11.01
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
+  imagePullSecrets:
+    - name: docker
 
-
-
+    
 ---
 
+---
 apiVersion: v1
 kind: Service
 metadata:
-  name: test-svs
+  name: springboot-k8ssvc
 spec:
-  type: NodePort
   selector:
-    name: test-app
+    app: spring-boot-k8s
   ports:
-    - port: 8080
+    - protocol: "TCP"
+      port: 8080
       targetPort: 8080
-      nodePort: 30009
+  type: NodePort
+
