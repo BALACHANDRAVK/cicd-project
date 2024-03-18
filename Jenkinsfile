@@ -22,7 +22,7 @@ pipeline {
         stage('upload to arti') {
             steps {
                 dir('/var/lib/jenkins/workspace/cicd/target') {
-                    nexusArtifactUploader artifacts: [[artifactId: 'cicd-artifact-id', classifier: '', file: 'devops-integration.jar', type: 'jar']], credentialsId: 'nexus-arti', groupId: 'com.truelearning', nexusUrl: '43.204.102.220:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'nexus-test', version: '0.0.1-SNAPSHOT'
+                    nexusArtifactUploader artifacts: [[artifactId: 'cicd-artifact-id', classifier: '', file: 'devops-integration.jar', type: 'jar']], credentialsId: 'nexus-arti', groupId: 'com.truelearning', nexusUrl: '172.31.11.66:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'nexus-test', version: '0.0.1-SNAPSHOT'
                 }
             }
         }
