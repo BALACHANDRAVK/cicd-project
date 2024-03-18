@@ -13,6 +13,11 @@ pipeline {
                 }
             }
         }
+        stage("Quality gate") {
+            steps {
+                waitForQualityGate abortPipeline: true
+            }
+        }
         stage('Moven Build'){
             steps {
                 sh 'mvn clean package'
